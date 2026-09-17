@@ -2,7 +2,7 @@
 
 A code review run by 35 agents, where a finding only counted if it survived another agent trying to disprove it.
 
-One run: 407 tool calls, 28 confirmed bugs, about fifteen minutes. Run at scale three times across one project, returning 28, 18, and 12 findings.
+One run: 35 agents, 30 verifiers, 407 tool calls, 28 confirmed bugs, about fifteen minutes. Run at scale three times across one project, returning 28 findings on the first pass, 18 on a pipeline rebuild, and 12 re-verified across app, pipeline and adapters.
 
 ## The composition
 
@@ -41,6 +41,10 @@ The judgment worth having is knowing which work parallelizes and which does not.
 ## What it found
 
 Not lint noise. An unbounded-retry hang, and calendar-versus-position window math errors, among the 28 confirmed on the first run.
+
+## What three runs taught that one run did not
+
+The yield falls, and that is the signal you want. Twenty-eight, then eighteen, then twelve, against a codebase that was growing the whole time. A fleet that returns the same count every run is measuring your prompt, not your code.
 
 ## Running one
 
